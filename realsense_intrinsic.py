@@ -14,9 +14,15 @@ if __name__ == '__main__':
     # Get intrinsics
     depth_sensor = profile.get_device().first_depth_sensor()
     cam_scale = depth_sensor.get_depth_scale()
-    intrc =  profile.get_stream(rs.stream.color).as_video_stream_profile().get_intrinsics()
-    intrd =  profile.get_stream(rs.stream.depth).as_video_stream_profile().get_intrinsics()
+    intrinsic_c =  profile.get_stream(rs.stream.color).as_video_stream_profile().get_intrinsics()
+    intrinsic_d =  profile.get_stream(rs.stream.depth).as_video_stream_profile().get_intrinsics()
 
     # Prints intrinsics
-    print(f'Color:\n{intrc}\n')
-    print(f'Depth:\n{intrd}, scale: {cam_scale}\n')
+    print(f'Color:\n{intrinsic_c}\n')
+    print(f'Depth:\n{intrinsic_d}, scale: {cam_scale}\n')
+
+    # Color:
+    # [ 640x480  p[313.423 245.644]  f[379.725 379.326]  Inverse Brown Conrady [-0.0581344 0.0675349 3.28108e-05 0.000804368 -0.0214354] ]
+
+    # Depth:
+    # [ 640x480  p[320.898 233.42]  f[385.988 385.988]  Brown Conrady [0 0 0 0 0] ], scale: 0.0010000000474974513
